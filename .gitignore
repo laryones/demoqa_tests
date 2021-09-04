@@ -25,12 +25,14 @@
 .allure/
 .gradle/
 allure-results/
+.idea/
 gradle/
 build/
 bin/
 out/
 logs/
 target/
+gradle.wrapper/
 .classpath
 .project
 .settings/org.eclipse.buildship.core.prefs

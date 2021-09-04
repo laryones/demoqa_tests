@@ -18,7 +18,7 @@ public class RegFormTests {
     }
 
     @Test
-    void InputData() {
+    void testFormRegistration() {
 
         // Open site
         open("https://demoqa.com/automation-practice-form");
