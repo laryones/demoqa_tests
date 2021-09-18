@@ -3,16 +3,19 @@ package guru.qa.tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-import static guru.qa.tests.TestData.firstName;
-import static guru.qa.tests.TestData.lastName;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
-public class RegFormTests extends TestBase {
+public class RegFormWitchCommentsTests {
 
+    // Open maximized window
+    @BeforeAll
+    static void beforeAll () {
+        Configuration.startMaximized = true;
+    }
 
     @Test
     void testFormRegistration() {
@@ -21,10 +24,10 @@ public class RegFormTests extends TestBase {
         open("https://demoqa.com/automation-practice-form");
 
         // Input Name
-        $("#firstName").setValue(firstName);
+        $("#firstName").setValue("Pavel");
 
         // Input Last Name
-        $("#lastName").setValue(lastName);
+        $("#lastName").setValue("Larion");
 
         // Input email
         $("#userEmail").setValue("pavel.larion@inex-digital.com");
@@ -73,7 +76,7 @@ public class RegFormTests extends TestBase {
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
 
         // Check Name
-        $(".table-responsive").shouldHave(text(firstName + " " + lastName));
+        $(".table-responsive").shouldHave(text("Pavel Larion"));
 
         // Check Email
         $(".table-responsive").shouldHave(text("pavel.larion@inex-digital.com"));
