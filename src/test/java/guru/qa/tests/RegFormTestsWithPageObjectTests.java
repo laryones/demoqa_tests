@@ -1,30 +1,31 @@
 package guru.qa.tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+import guru.qa.tests.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static guru.qa.tests.TestData.firstName;
 import static guru.qa.tests.TestData.lastName;
 
-public class RegFormTests extends TestBase {
+public class RegFormTestsWithPageObjectTests extends TestBase {
 
+
+    RegistrationPage registrationPage= new RegistrationPage();
 
     @Test
     void testFormRegistration() {
 
         // Open site
-        open("https://demoqa.com/automation-practice-form");
+        registrationPage.openPage();
 
         // Input Name
-        $("#firstName").setValue(firstName);
+        registrationPage.typeFirstName(firstName);
 
         // Input Last Name
-        $("#lastName").setValue(lastName);
+        registrationPage.typeLastName(lastName);
 
         // Input email
         $("#userEmail").setValue("pavel.larion@inex-digital.com");
@@ -36,10 +37,7 @@ public class RegFormTests extends TestBase {
         $("#userNumber").setValue("9998762534");
 
         // Select Date of Birth
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("October");
-        $(".react-datepicker__year-select").selectOption("1995");
-        $(".react-datepicker__day--022").click();
+        registrationPage.calendar.setDate("29","September","1995");
 
         // Input Subject
         $("#subjectsInput").setValue("Math").pressEnter();

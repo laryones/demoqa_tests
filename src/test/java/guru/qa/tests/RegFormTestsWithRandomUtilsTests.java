@@ -1,17 +1,20 @@
 package guru.qa.tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static guru.qa.tests.TestData.firstName;
 import static guru.qa.tests.TestData.lastName;
+import static guru.qa.tests.utils.RandomUtils.getRandomString;
 
-public class RegFormTests extends TestBase {
+public class RegFormTestsWithRandomUtilsTests extends TestBase {
+
+    String firstName = getRandomString(11),
+            lastName = getRandomString(8);
+
 
 
     @Test
